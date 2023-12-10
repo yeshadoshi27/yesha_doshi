@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  
+  body {
+      font-family: Arial, sans-serif;
+  }
+  .container {
+      width: 80%;
+      margin-left: 5%;
+  }
+  h1 {
+      text-align: center;
+      color: #f21d80; 
+      font-size: 45px;
+      font-weight: 500;
+
+  }
+  table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+  th, td {
+      padding: 8px;
+      text-align: left;
+  }
+  th {
+      background-color: #f2f2f2;
+  }
+  .footer {
+      text-align: center;
+      margin-top: 20px;
+  }
+  .new-contact-btn {
+      margin-bottom: 20px;
+      display: block;
+      width: 200px;
+      padding: 10px;
+      text-align: center;
+      background-color: #f21d80;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+  .action-icons {
+      cursor: pointer;
+  }
+  .edit-icon {
+      color: orange;
+  }
+  .delete-icon {
+      color: red;
+  }
+  .margin{
+    text-decoration: none;
+    margin: 0 5px
+  }
+  .signature{
+    color: rgb(0, 0, 0);
+    font-size: larger;
+  }
+</style>
+<div style="text-align: center;">
+  <h1 class="mt-4">Contact Management</h1>
+</div>
+<div class="container">
+  <a href="{% url 'task_create' %}" class="new-contact-btn">Create a New Contact</a>
+  <table class="table table-striped table-bordered mt-4">
+    
+    <thead>
+     
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Created Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in task_list %}
+      <tr>
+        <td>
+          <a class="btn btn-info btn-sm margin" href="{% url 'task_detail' task.pk %}" >
+            <span class="action-icons edit-icon" title="Edit">&#9998;</span>
+          </a>
+          <a class="icon-link margin" href="{% url 'task_confirm_list' task.pk %}">
+                <span class="action-icons bin-icon" title="Delete">&#128465;</span>
+          </a>
+          {{ task.name }}
+        </td>
+        <td> 
+          {{task.email}}
+        </td>
+        
+        <td>
+          {{task.created_time}}
+        </td>
+        
+      </tr>
+      {% endfor %}
+    </tbody> 
+  </table>
+</div>
+
+</div>
+
+{% endblock content %}
+
+    
