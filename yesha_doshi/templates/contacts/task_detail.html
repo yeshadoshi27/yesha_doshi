@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    h1 {
+        text-align: center;
+        color: #f21d80; 
+        font-size: 45px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+    }
+    .container{
+        margin-left: 40px;
+      }
+    .submit{
+        margin-top: 2px;
+        padding: 10px 12px;
+        background-color: #f21d80;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        text-decoration: none;
+        font-size: 13.33px;
+          font-family: Arial;
+      }
+      .edit{
+        margin-top: 2px;
+        padding: 10px 12px;
+        background-color: #FFDB58;
+        color: black;
+        border: none;
+        border-radius: 7px;
+        text-decoration: none;
+        font-size: 13.33px;
+          font-family: Arial;
+      }
+      .cancel{
+        margin-top: 2px;
+        padding: 10px 12px;
+        background-color: #1DA1F2;
+        color: black;
+        border: none;
+        border-radius: 7px;
+        text-decoration: none;
+        font-size: 13.33px;
+          font-family: Arial;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .signature{
+        color: rgb(0, 0, 0);
+        font-size: larger;
+      }
+      hr{
+        margin: 20px 40px;
+        
+      }
+</style>
+
+<h1 class="mt-4">Contact Details</h1>
+<div class="container">
+
+    <p class="mt-4"><strong>Name:</strong> {{ task.name }}</p>
+    <p><strong>Email:</strong> {{ task.email }}</p>
+    <p><strong>Notes:</strong> <br> {{ task.notes   }}</p>
+    <p><strong>Created Time:</strong> {{ task.created_time }}</p>
+
+   
+     <a class="btn btn-secondary cancel" href="{% url 'task_list' %}">Home</a>
+     <a class="btn btn-primary edit" href="{% url 'task_update' task.pk %}">Edit</a>
+    <a class="btn btn-danger submit" href="{% url 'task_confirm_list' task.pk %}">Delete</a>
+    
+</div>
+<hr>
+
+{% endblock content %}
