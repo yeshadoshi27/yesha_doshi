@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  h1 {
+    text-align: center;
+    color: #f21d80; 
+    font-size: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+}
+.container{
+  margin-left: 40px;
+}
+p{
+  font-family: 'Arial';
+}
+  .submit{
+    padding: 10px 12px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 7px;
+  }
+  .cancel{
+    margin-top: 2px;
+    padding: 10px 12px;
+    background-color: #1DA1F2;
+    color: black;
+    border: none;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13.33px;
+      font-family: Arial;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .signature{
+    color: rgb(0, 0, 0);
+    font-size: larger;
+  }
+  hr{
+    margin: 20px 40px;
+    
+  }
+</style>
+<h1 class="mt-4">Confirm Delete</h1>
+<div class="container">
+  <p>Are you sure you want to delete task "{{ task.name }}"?</p>
+  <form method="post" class="mt-4">
+    {% csrf_token %}
+    <button type="submit" class="submit">Delete</button>
+    <a class="cancel" href="{% url 'task_list' %}">Cancel</a>
+  </form>
+</div>
+<hr>
+
+{% endblock content %}
